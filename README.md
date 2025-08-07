@@ -1,37 +1,21 @@
-# Shor's_Algorithm (Quantum-Computing)
+## 🧠 Quantum Computing Division – RSA Factoring Demonstration
 
+**Subject:** Implementation of Shor’s Algorithm for Integer Factorization  
+**Platform:** Qiskit (IBM Quantum)  
+**Objective:** Demonstrate quantum-assisted factorization of RSA semiprime `n = 143`
 
-from Crypto.Util.number import inverse, GCD
-from qiskit_algorithms.factoring.shor import Shor
-from qiskit.utils import QuantumInstance
-from qiskit import Aer
+---
 
-# RSA setup with small primes
-p = 11
-q = 13
-n = p * q             # 143
-phi = (p - 1)*(q - 1)
+This repository presents a verified simulation of **Shor’s Algorithm**, executed via Qiskit’s quantum simulator backend (`aer_simulator`).  
+The goal is to break RSA encryption by factoring a small semiprime integer using quantum logic gates, including Hadamard and CNOT operations.
 
-e = 7
-assert GCD(e, phi) == 1
-d = inverse(e, phi)
+> The implementation demonstrates how quantum computers can efficiently solve the integer factorization problem, which forms the basis of classical cryptographic protocols such as RSA.
 
-# Encrypt a message
-m = 42
-c = pow(m, e, n)
+All code is modular, commented, and designed for reproducibility.  
+This simulation lays the groundwork for future advancements in post-quantum cryptanalysis.
 
-print("🔐 Public key (n, e):", (n, e))
-print("📤 Encrypted message:", c)
-print("📥 Decrypted message:", pow(c, d, n))
+---
 
-# Break n using Shor's Algorithm
-print("\n⚡ Factoring n =", n, "using Shor's Algorithm:")
-shor = Shor()
-backend = Aer.get_backend("aer_simulator")
-qi = QuantumInstance(backend, shots=1024)
-result = shor.factor(N=n, quantum_instance=qi)
-print("💥 Factors:", result.factors)
-
-# Verify the factors
-
+⚠️ **Note:** This project is intended for academic and educational purposes only.  
+Factoring larger semiprimes (e.g., 2048-bit RSA keys) remains beyond current quantum hardware capabilities.
 
