@@ -1,4 +1,5 @@
-# Shor's_Algorithm (Quantum-Computing)
+# Shor's_Algorithm (Quantum-Computing): Quantum RSA Killer: Implementation of Shor’s Algorithm using Qiskit to shatter semiprime encryption and expose the core weakness of RSA. This isn't
+
 
 from Crypto.Util.number import inverse, GCD
 from qiskit_algorithms.factoring.shor import Shor
